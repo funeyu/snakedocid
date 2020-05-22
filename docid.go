@@ -1,4 +1,4 @@
-package sankedocid
+package snakedocid
 
 import "errors"
 
