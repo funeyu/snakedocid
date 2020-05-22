@@ -2,6 +2,9 @@ package sankedocid
 
 import "errors"
 
+var (
+	MAXRANKID int = 2 << 20
+)
 type DocId uint64
 
 // 生成一个唯一的文章id, 组成为 48 位的域名信息 + 文章在该域名的index信息 16位信息，假定一个独立博客的总有文章数不能超过2<<16
