@@ -3,7 +3,7 @@ package snakedocid
 import "errors"
 
 var (
-	MAXRANKID int = 1 << 20
+	MAXRANKID int = (1 << 20) - 1
 )
 type DocId uint64
 
@@ -13,7 +13,7 @@ type DocId uint64
 // sub_id: 范围为： 0 ~2^28
 // i : 范围为： 0 ~ 2^16, 这里的值从65536依次递减，最旧的文章的i就是65536,最新的文章i为65536 -n(该博客的总文章数)
 func GeneDocId(rank_id uint32, sub_rank_id uint32, i uint16) (DocId, error) {
-	if rank_id > 1 << 20 {
+	if rank_id >= 1 << 20 {
 		return 0, errors.New("rank_id 不能超出最大值：2 ^ 20")
 	}
 	if sub_rank_id > 1 << 28 {
